@@ -1,0 +1,64 @@
+.display {
+    background-color: rgb(224, 224, 224);
+    width: auto;
+    height: 60px;
+    text-align: end;
+    padding-right: 20px;
+    border-color: 20px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family:Arial, Helvetica, sans-serif;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-div {
+    background-color: rgb(94, 118, 141);
+    display: flex;
+    height: 300px;
+    width: 150px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 15px;
+    align-self: center;
+    /*flex-wrap: wrap;*/
+}
+
+button{
+    width: 45px;
+    height: 35px;
+    border-color: black;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.number-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.operate-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 5px;
+}
