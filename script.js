@@ -38,7 +38,7 @@ function divide(a, b){
 }
 
 
-clearButton.addEventListener('click', (x,y) => {
+clearButton.addEventListener('click', () => {
     displayValue = [];
     currentDisplayDiv.innerText = "";
     previousDisplayDiv.innerText = "";
@@ -54,38 +54,40 @@ function appendValue(value) {
         document.querySelector(".decimal-btn").disabled = true;
         decimalPlaced = true;
     }
+
     if(currentDisplayDiv.innerText == '') currentDisplayDiv.innerText = value;
+
     else currentDisplayDiv.innerText += value; 
+
     displayValue.push(value);
     
 }
 
 function appendOperatorValue(operatorValue) {
+
     document.querySelector(".decimal-btn").disabled = false;
     decimalPlaced = false;
-    console.log("pressed operator");
 
-        if (operator && displayValue.length > 0) {
-            operate();
-        }
+    if (operator && displayValue.length > 0) {
+        operate();
+    }
 
-        if(result !== null) {
-            currentValue = result;
-            previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
-        }
-        else if(result == null)
-        {
-            currentValue = displayValue;
-            currentValue = currentValue.join('');
-            previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
+    if(result !== null) {
+        currentValue = result;
+        previousDisplayDiv.innerText = currentValue + " " + operatorValue;
+    }
 
-        }
+    else if(result == null)
+    {
+        currentValue = displayValue;
+        currentValue = currentValue.join('');
+
+        previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
+
+    }
         
-        currentDisplayDiv.innerText = ""
-        displayValue = []
-        
-
-    
+    currentDisplayDiv.innerText = ""
+    displayValue = []
     operator = operatorValue;
 
 }
@@ -106,34 +108,26 @@ function operate(){
     switch (operator) {
         case '+':
             result = add(currentValue, nextValue)
-            currentDisplayDiv.innerText = result;
             break;
     
         case '-':
             result = subtract(currentValue, nextValue)
-            currentDisplayDiv.innerText = result;
             break;
 
         case '*':
             result = multiply(currentValue, nextValue)
-            currentDisplayDiv.innerText = result;
             break;  
 
         case '/':
             result = divide(currentValue, nextValue)
-            currentDisplayDiv.innerText = result;
             break;
             
         default:
             currentDisplayDiv.innerText = 'error';
             break;
     }
-    
-    
-    console.log("currentValue is: " + currentValue);
-    console.log("operator is: " + operator);
-    console.log("nextValue is: " + nextValue);
-    console.log("Result is: " + result)
 
+    result = result.toFixed(5)
+    currentDisplayDiv.innerText = result;
 
 }
