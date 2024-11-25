@@ -5,49 +5,53 @@ const divideButton = document.querySelector(".divide-btn");
 const clearButton = document.querySelector(".clear-btn");
 const equalButton = document.querySelector(".equal-btn");
 
-
 const currentDisplayDiv = document.querySelector(".currentDisplay");
 const previousDisplayDiv = document.querySelector(".previousDisplay")
 
-// let num2 = parseInt(prompt("Enter a number: "))
-
-//let inputArray = [num1, operator, num2];
-
 let operator = '';
 let currentValue = '';
-let previousValue = ''
+let nextValue = ''
+let result = null;
 
 let displayValue = [];
 
-clearButton.addEventListener('click', () => {
-    currentDisplayDiv.innerText = '';
-})
-
 function add(a, b){
-    let sum;
-    return sum = a+b;
+    let sum = a+b;
+    return sum;
 }
 
 function subtract(a, b){
-    return a-b;
+    let diff = a-b;
+    return diff;
 }
 
 function multiply(a, b){
-    return a*b;
+    let prod = a*b;
+    return prod;
 }
 
 function divide(a, b){
-    return a/b;
+    let div = a/b;
+    return div;
 }
 
-function clear() {
-    currentDisplayDiv.innerText = '';
-    previousDisplayDiv.innerText = '';
-}
+
+clearButton.addEventListener('click', (x,y) => {
+    displayValue = [];
+    currentDisplayDiv.innerText = "";
+    previousDisplayDiv.innerText = "";
+    operator = '';
+    // currentValue = 0;
+    // nextValue = 0;
+    result = null;
+});
+
 
 function appendValue(value) {
     if(currentDisplayDiv.innerText == '') currentDisplayDiv.innerText = value;
     else currentDisplayDiv.innerText += value;
+    // console.log(value)
+ 
     displayValue.push(value);
     
 }
@@ -59,30 +63,81 @@ function appendOperatorValue(operatorValue) {
     }
 
     else {
-        currentValue = displayValue;
-        currentValue = currentValue.join('')
-        previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
+
+        if(result !== null) {
+            currentValue = result;
+            console.log('result not null: ' + result);
+            console.log('currentvalue1: ' + currentValue);
+            previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
+        }
+        else if(result == null)
+        {
+        
+            currentValue = displayValue;
+            console.log('result null: ' + result);
+            currentValue = currentValue.join('');
+            previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
+
+        }
+        
         currentDisplayDiv.innerText = ""
         operator = operatorValue;
         // displayValue = '';
+        displayValue = []
 
     }
     
-    console.log(operator)
-    console.log(currentValue)
+    // console.log(operator)
+    // console.log(currentValue)
 }
 
 function operate(){
+    // console.log(displayValue)
+
     
-    appendValue(currentDisplayDiv.innerText)
+    
+    nextValue = displayValue;
+    nextValue = nextValue.join('')
+
+    currentValue = Number(currentValue);
+    nextValue = Number(nextValue);
+
+    previousDisplayDiv.innerText += " " + nextValue;
+
+
+    
+    console.log('operator' + operator)
+    console.log('currentvalue2: ' + currentValue);
+    console.log('nextvalue2: ' + nextValue);
     console.log(displayValue)
-    console.log("operate");
+
+    switch (operator) {
+        case '+':
+            result = add(currentValue, nextValue)
+            currentDisplayDiv.innerText = result;
+            break;
+    
+        case '-':
+            result = subtract(currentValue, nextValue)
+            currentDisplayDiv.innerText = result;
+            break;
+
+        case '*':
+            result = multiply(currentValue, nextValue)
+            currentDisplayDiv.innerText = result;
+            break;  
+
+        case '/':
+            result = divide(currentValue, nextValue)
+            currentDisplayDiv.innerText = result;
+            break;
+            
+        default:
+            currentDisplayDiv.innerText = 'error';
+            break;
+    }
+
+    // currentValue = result;
+    // nextValue = currentValue;
+
 }
-
-// addButton.addEventListener("click", () => calculateDisplayvalue.innerText += "+");
-
-// equalButton.addEventListener("click", () => {
-//     if(calculateDisplayvalue.innerText.includes("+")){
-//         console.log(add(num1, num2))
-//     }
-// });

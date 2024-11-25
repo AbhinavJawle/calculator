@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="main-div">
@@ -25,6 +24,8 @@
                 <button class="8" onclick="appendValue('8')">8</button>
                 <button class="9" onclick="appendValue('9')">9</button>
                 <div class="zero-container" onclick="appendValue('0')"><button class="0">0</button></div>
+                <button class="." onclick="appendValue('.')">.</button>
+
             </div>
     
             <div class="operate-buttons">
@@ -37,6 +38,7 @@
             </div>
         </div>
     </div>
-    
+    <script src="script.js"></script>
+
 </body>
 </html>
