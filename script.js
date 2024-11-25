@@ -41,67 +41,55 @@ clearButton.addEventListener('click', (x,y) => {
     currentDisplayDiv.innerText = "";
     previousDisplayDiv.innerText = "";
     operator = '';
-    // currentValue = 0;
-    // nextValue = 0;
     result = null;
 });
 
 
 function appendValue(value) {
     if(currentDisplayDiv.innerText == '') currentDisplayDiv.innerText = value;
-    else currentDisplayDiv.innerText += value;
-    // console.log(value)
- 
+    else currentDisplayDiv.innerText += value; 
     displayValue.push(value);
     
 }
 
 function appendOperatorValue(operatorValue) {
     console.log("pressed operator");
-    // if(currentDisplayDiv.innerText == '') {
-    //     currentDisplayDiv.innerText = '';
-    //     operator = '';
-    // }
+
         if(nextValue !== null) operate()
-            
-            if(result !== null) {
-                currentValue = result;
-                console.log('1' + operatorValue)
-                previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
-            }
+
+        if(result !== null) {
+            currentValue = result;
+            previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
+        }
         else if(result == null)
         {
             currentValue = displayValue;
-            console.log('2 ' + operatorValue);
             currentValue = currentValue.join('');
             previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
 
         }
         
         currentDisplayDiv.innerText = ""
-        // displayValue = '';
         displayValue = []
         
 
     
     operator = operatorValue;
-    // console.log(operator)
-    // console.log(currentValue)
+
 }
 
 function operate(){
-    // console.log(displayValue)
-
+    console.log(displayValue)
+    console.log('displayvalue: ' + typeof displayValue)
+    
     nextValue = displayValue;
     nextValue = nextValue.join('')
 
     currentValue = Number(currentValue);
     nextValue = Number(nextValue);
 
-    console.log('operator' + operator)
-    console.log('currentvalue2: ' + currentValue);
-    console.log('nextvalue2: ' + nextValue);
-    console.log(displayValue)
+    console.log('nextvalue: ' + typeof nextValue)
+    console.log(nextValue)
 
     switch (operator) {
         case '+':
@@ -128,8 +116,11 @@ function operate(){
             currentDisplayDiv.innerText = 'error';
             break;
     }
-
-    // currentValue = result;
-    // nextValue = currentValue;
+    
+    
+    console.log("currentValue is: " + currentValue);
+    console.log("operator is: " + operator);
+    console.log("nextValue is: " + nextValue);
+    console.log("Result is: " + result)
 
 }
