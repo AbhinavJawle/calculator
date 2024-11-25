@@ -63,7 +63,7 @@ function appendOperatorValue(operatorValue) {
     }
 
     else {
-
+        if(nextValue !== null) operate()
         if(result !== null) {
             currentValue = result;
             console.log('result not null: ' + result);
@@ -94,18 +94,12 @@ function appendOperatorValue(operatorValue) {
 function operate(){
     // console.log(displayValue)
 
-    
-    
     nextValue = displayValue;
     nextValue = nextValue.join('')
 
     currentValue = Number(currentValue);
     nextValue = Number(nextValue);
 
-    previousDisplayDiv.innerText += " " + nextValue;
-
-
-    
     console.log('operator' + operator)
     console.log('currentvalue2: ' + currentValue);
     console.log('nextvalue2: ' + nextValue);
