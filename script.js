@@ -57,36 +57,34 @@ function appendValue(value) {
 }
 
 function appendOperatorValue(operatorValue) {
-    if(currentDisplayDiv.innerText == '') {
-        currentDisplayDiv.innerText = '';
-        operator = '';
-    }
-
-    else {
+    console.log("pressed operator");
+    // if(currentDisplayDiv.innerText == '') {
+    //     currentDisplayDiv.innerText = '';
+    //     operator = '';
+    // }
         if(nextValue !== null) operate()
-        if(result !== null) {
-            currentValue = result;
-            console.log('result not null: ' + result);
-            console.log('currentvalue1: ' + currentValue);
-            previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
-        }
+            
+            if(result !== null) {
+                currentValue = result;
+                console.log('1' + operatorValue)
+                previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
+            }
         else if(result == null)
         {
-        
             currentValue = displayValue;
-            console.log('result null: ' + result);
+            console.log('2 ' + operatorValue);
             currentValue = currentValue.join('');
             previousDisplayDiv.innerText += currentValue + ' ' + operatorValue;
 
         }
         
         currentDisplayDiv.innerText = ""
-        operator = operatorValue;
         // displayValue = '';
         displayValue = []
+        
 
-    }
     
+    operator = operatorValue;
     // console.log(operator)
     // console.log(currentValue)
 }
