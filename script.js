@@ -55,8 +55,10 @@ function appendValue(value) {
 function appendOperatorValue(operatorValue) {
     console.log("pressed operator");
 
-        if(nextValue !== null) operate()
-
+        if (operator && displayValue.length > 0) {
+            operate();
+        }
+        
         if(result !== null) {
             currentValue = result;
             previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
@@ -122,5 +124,6 @@ function operate(){
     console.log("operator is: " + operator);
     console.log("nextValue is: " + nextValue);
     console.log("Result is: " + result)
+
 
 }
