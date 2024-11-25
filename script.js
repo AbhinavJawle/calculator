@@ -15,6 +15,8 @@ let result = null;
 
 let displayValue = [];
 
+let decimalPlaced = false;
+
 function add(a, b){
     let sum = a+b;
     return sum;
@@ -42,10 +44,16 @@ clearButton.addEventListener('click', (x,y) => {
     previousDisplayDiv.innerText = "";
     operator = '';
     result = null;
+    decimalPlaced = false;
+    document.querySelector(".decimal-btn").disabled = false;
 });
 
 
 function appendValue(value) {
+    if(value === '.' && decimalPlaced == false) {
+        document.querySelector(".decimal-btn").disabled = true;
+        decimalPlaced = true;
+    }
     if(currentDisplayDiv.innerText == '') currentDisplayDiv.innerText = value;
     else currentDisplayDiv.innerText += value; 
     displayValue.push(value);
@@ -53,12 +61,14 @@ function appendValue(value) {
 }
 
 function appendOperatorValue(operatorValue) {
+    document.querySelector(".decimal-btn").disabled = false;
+    decimalPlaced = false;
     console.log("pressed operator");
 
         if (operator && displayValue.length > 0) {
             operate();
         }
-        
+
         if(result !== null) {
             currentValue = result;
             previousDisplayDiv.innerText = " " + currentValue + " " + operatorValue;
